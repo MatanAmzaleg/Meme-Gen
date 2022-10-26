@@ -13,8 +13,8 @@
     <header class="main-header flex">
         <h1>Meme-Generator <img src="img/monster.png" alt=""></h1>
         <div class="nav-btns">
-            <button>Gallery</button>
-            <button>About</button>
+            <button onclick="onToggleGallery()">Gallery</button>
+            <button onclick="onToggleMemeEditor()">About</button>
         </div>
     </header>
 
@@ -29,7 +29,8 @@
             </div>
         </nav>
         <div class="image-container flex">
-            <article class="img-card"><img class="photo" src="img/meme-imgs (various aspect ratios)/2.jpg" alt=""></article>
+            <article class="img-card"><img class="photo" src="img/meme-imgs (various aspect ratios)/2.jpg" alt="">
+            </article>
             <article class="img-card"></article>
             <article class="img-card"></article>
             <article class="img-card"></article>
@@ -42,13 +43,24 @@
     </div>
 
 
-    <div class="meme-editor-container">
-        
+    <div class="meme-editor-container flex hidden">
+        <div class="canvas-container">
+            <canvas style="outline: 1px solid green"></canvas>
+        </div>
+        <div class="workspace">
+
+        </div>
     </div>
 
     <footer class="main-footer flex">
         <h1>Meme-Generator <img src="img/monster.png" alt=""></h1>
     </footer>
+
+    <script src="js/services/storage-service.js"></script>
+    <script src="js/services/gallery-service.js"></script>
+    <script src="js/services/meme-service.js"></script>
+    <script src="js/gallery-controller.js"></script>
+    <script src="js/meme-controller.js"></script>
 </body>
 
 </html>

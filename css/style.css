@@ -30,6 +30,8 @@
 
 body {
     flex-direction: column;
+    height: 100%;
+    background-color: rgba(243, 232, 232, 0.808);
 }
 
 h1,
@@ -51,7 +53,7 @@ h6 {
 }
 
 .hidden {
-    display: hidden;
+    display: none;
 }
 
 
@@ -106,15 +108,15 @@ h6 {
     margin-top: 20px;
     width: 90%;
     border: 1px solid black;
-    gap: 10px;
+    gap: 20px;
     overflow: auto;
+    margin-bottom: 50px;
 }
 
 .img-card {
     flex-basis: auto;
     aspect-ratio: 1/1;
     max-height: 100%;
-    border: 1px solid black;
 }
 
 .photo {
@@ -122,8 +124,41 @@ h6 {
     max-width: 100%;
     display: block;
     margin: auto;
+    object-fit: cover;
+    border-radius: 20px;
+    border: 1px solid black;
 }
 
+/* MEME EDITOR */
+
+.meme-editor-container{
+    width: 100%;
+    height: 609px;
+    align-items: center;
+    flex-direction: column;
+    justify-content: space-between;
+    margin: auto;
+    border: 1px solid black; 
+    margin-top: 100px;
+    margin-bottom: 5px;
+    padding: 10px;
+    bottom: 0;
+    gap: 5px;
+
+}
+
+
+.canvas-container{
+    width: 80%;
+    height: 40%;
+    border: 1px solid red;
+}
+
+.workspace{
+    width: 80%;
+    height: 60%;
+    border: 1px solid red;
+}
 
 
 
@@ -192,6 +227,10 @@ h6 {
         width: 45%;
     }
 
+    .search-nav {
+        padding-inline: 40px;
+    }
+
 
 }
 
@@ -215,12 +254,13 @@ h6 {
 
     /* image gallery */
 
-    .search-nav {
-        padding-inline: 40px;
-    }
 
     .img-card {
         width: 30%;
+    }
+
+    .search-nav {
+        padding-inline: 40px;
     }
 
 
@@ -255,7 +295,27 @@ h6 {
 
     .search-nav input {
         width: 300px;
+    }  
+
+    /* meme editor */
+
+    .canvas-container{
+        width: 49%;
+        height: 85%;
+        border: 1px solid red;
     }
+    
+    .workspace{
+        width: 49%;
+        height: 85%;
+        border: 1px solid red;
+    }
+
+    .meme-editor-container{
+        flex-direction: row;
+        height: 789px;
+    }
+    
 
 
 
