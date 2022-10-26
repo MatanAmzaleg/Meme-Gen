@@ -1,6 +1,5 @@
 'use strict'
 
-var gSettings = {}
 
 var gMeme = {
     selectedImgId: 5,
@@ -8,23 +7,45 @@ var gMeme = {
     lines: [
         {
             txt: 'I sometimes eat Falafel',
-            size: 20,
-            align: 'left',
-            color: 'red'
+            size: 50,
+            align: 'center',
+            color: 'white',
+            stroke: 'black'
         }
     ]
 }
 
 
-function saveSettings(settings) {
-    gSettings = settings
-    console.log(gSettings);
-}
 
-function getSettings(){
-    return gSettings
-}
-
-function getMemes(){
+function getMeme(){
     return gMeme
+}
+
+function saveText(text){
+    gMeme.lines[0].txt = text
+    console.log(gMeme);
+}
+
+function saveColor(color){
+    gMeme.lines[0].color = color
+}
+
+function saveImgId(imgId){
+    gMeme.selectedImgId = imgId
+}
+
+function saveStroke(strokeClr){
+    gMeme.lines[0].stroke = strokeClr
+}
+
+function saveFont(font){
+    gMeme.lines[0].font = font
+}
+
+function setFontSize(op){
+    gMeme.lines[0].size += op
+}
+
+function setDirection(dir){
+    gMeme.lines[0].align = dir
 }
