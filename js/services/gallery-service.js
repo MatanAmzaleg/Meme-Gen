@@ -58,3 +58,7 @@ var gImgs = [
 function getImg(id){
   return  gImgs.find(img => img.id === id)
 }
+
+function getImgs(){
+  return gImgs
+}

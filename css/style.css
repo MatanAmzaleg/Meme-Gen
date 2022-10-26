@@ -166,11 +166,12 @@ input{
 
 .workspace-container{
     display: grid;
-    grid-template-rows: 1fr 1fr 1fr 1fr 2fr ;
+    grid-template-rows: 1fr 1fr 1fr 1fr 1fr 2fr ;
     grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
-    height: 70%;
+    height: 68%;
     width: 95%;
-    justify-content: center;
+    justify-self: center;
+    align-self: center;
     gap: 20px;
 
 }
@@ -206,15 +207,23 @@ input{
 }
 .impact{
     grid-row: 4;
-    grid-column: span 3;
+    grid-column: 2/5;
 }
 .text-stroke{
-    grid-row: 4;
-    grid-column: 4;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    grid-row: 5;
+    grid-column: 2;
+    border: 1px solid black;
 }
 .paint-board{
-    grid-row: 4;
-    grid-column: 5;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    grid-row: 5;
+    grid-column: 4;
+    border: 1px solid black;
 }
 
 
@@ -292,7 +301,30 @@ input{
         padding-inline: 40px;
     }
 
+    /* meme editor */
 
+    .workspace-btn img{
+        width: 30px;
+        height: 30px;
+    }
+
+    .meme-text{
+        grid-column: 2/5;
+        max-width: 200px;
+    }
+
+    #text-stroke, #paint-board{
+        max-width: 30px;
+    }
+
+    .impact{
+        height: 30px;
+    }
+
+    .workspace button{
+        max-height: 30px;
+        max-width: 30px;
+    }
 }
 
 
@@ -324,6 +356,12 @@ input{
         padding-inline: 40px;
     }
 
+    /* meme editor */
+
+    .workspace-btn img{
+        width: 30px;
+        height: 30px;
+    }
 
 
 }
@@ -377,8 +415,8 @@ input{
     }
 
     .workspace-btn img{
-        width: 30px;
-        height: 30px;
+        width: 40px;
+        height: 40px;
     }
     
 

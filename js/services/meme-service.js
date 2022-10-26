@@ -1,5 +1,6 @@
 'use strict'
 
+var gSettings = {}
 
 var gMeme = {
     selectedImgId: 5,
@@ -14,6 +15,16 @@ var gMeme = {
     ]
 }
 
-function getImgs(){
-    return gImgs
+
+function saveSettings(settings) {
+    gSettings = settings
+    console.log(gSettings);
+}
+
+function getSettings(){
+    return gSettings
+}
+
+function getMemes(){
+    return gMeme
 }
