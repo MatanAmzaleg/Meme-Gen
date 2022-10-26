@@ -46,6 +46,10 @@ h6 {
     -webkit-text-stroke-color: var(--clr0);
 }
 
+input{
+    border-radius: 5px;
+}
+
 /* HELPERS */
 
 .flex {
@@ -107,7 +111,6 @@ h6 {
     flex-wrap: wrap;
     margin-top: 20px;
     width: 90%;
-    border: 1px solid black;
     gap: 20px;
     overflow: auto;
     margin-bottom: 50px;
@@ -149,16 +152,74 @@ h6 {
 
 
 .canvas-container{
+    align-items: center;
     width: 80%;
     height: 40%;
-    border: 1px solid red;
 }
 
 .workspace{
-    width: 80%;
-    height: 60%;
+    justify-content: center;
+    width: 90%;
+    height: 55%;
     border: 1px solid red;
 }
+
+.workspace-container{
+    display: grid;
+    grid-template-rows: 1fr 1fr 1fr 1fr 2fr ;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+    height: 70%;
+    width: 95%;
+    justify-content: center;
+    gap: 20px;
+
+}
+
+/* GRID LAYOUT */
+
+.meme-text{
+    grid-column: 1/-1;
+}
+
+.up-and-down{
+    grid-column: 2;
+}
+.increase-font{
+    grid-row: 3;
+    grid-column: 1;
+}
+.decrease-font{
+    grid-row: 3;
+    grid-column: 2;
+}
+.align-left{
+    grid-row: 3;
+    grid-column: 3;
+}
+.align-center{
+    grid-row: 3;
+    grid-column: 4;
+}
+.align-right{
+    grid-row: 3;
+    grid-column: 5;
+}
+.impact{
+    grid-row: 4;
+    grid-column: span 3;
+}
+.text-stroke{
+    grid-row: 4;
+    grid-column: 4;
+}
+.paint-board{
+    grid-row: 4;
+    grid-column: 5;
+}
+
+
+
+
 
 
 
@@ -300,9 +361,8 @@ h6 {
     /* meme editor */
 
     .canvas-container{
-        width: 49%;
+        width: 48%;
         height: 85%;
-        border: 1px solid red;
     }
     
     .workspace{
@@ -314,6 +374,11 @@ h6 {
     .meme-editor-container{
         flex-direction: row;
         height: 789px;
+    }
+
+    .workspace-btn img{
+        width: 30px;
+        height: 30px;
     }
     
 
