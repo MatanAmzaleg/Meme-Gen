@@ -1,0 +1,160 @@
+:root{
+    /* PALLET */
+
+    --clr-primary: rgba(34, 151, 151, 0.705);
+
+    --clr10: rgb(238, 247, 255);
+    --clr0: rgb(22, 22, 22);
+}
+
+/* TYPOGRAPHY */
+
+@font-face {
+    font-family: sigmar-one;
+    src: url(../fonts/sigmar/SigmarOne.ttf);
+}
+
+@font-face {
+    font-family: montserrat;
+    src: url(../fonts/montserrat/Montserrat-VariableFont_wght.ttf);
+}
+
+
+/* BASICS */
+
+*{
+    margin: 0;
+    box-sizing: border-box;
+    font-family: montserrat;
+}
+
+body{
+    flex-direction: column;
+}
+
+h1,h2,h3,h4,h5,h6{
+    font-family: sigmar-one;
+    color: rgb(209, 255, 253);
+    -webkit-text-stroke-width: 1px;
+    -webkit-text-stroke-color: var(--clr0);
+}
+
+/* HELPERS */
+
+.flex{
+    display: flex;
+}
+
+.hidden{
+    display: hidden;
+}
+
+
+/* HEADER */
+
+.main-header{
+    align-items: center;
+    height: 10vh;
+    background-color: var(--clr-primary);
+    width: 100%;
+ 
+}
+
+.main-header img{
+    height: 60px;
+}
+
+.main-header button{
+    color: var(--clr10);
+    border: none;
+    background-color: inherit;
+}
+
+.main-header button:hover{
+    color: var(--clr0);
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* MOBILE */
+@media (max-width: 900px) {
+    /* header */
+    .main-header{
+        font-size: 0.7rem;
+        justify-content: space-between;
+        padding-inline: 0;
+    }
+    .main-header img{
+        height: 30px;
+    }
+    .main-header button{
+        width: 40px;
+        height: 10px;
+        font-size: 0.7rem;
+        margin: 10px;
+    }
+}
+
+
+/* SMALL */
+@media (min-width: 640px) {
+    /* header */
+    .main-header{
+        font-size: 1rem;
+        justify-content: space-between;
+    }
+    .main-header button{
+        width: 60px;
+        height: 20px;
+        font-size: 1rem;
+    }
+
+}
+
+/* MEDIUM */
+@media (min-width: 900px) {
+    /* header */
+    .main-header{
+        font-size: 1.5rem;
+      
+    }
+    .main-header button{
+        width: 120px;
+        height: 40px;
+        font-size: 1.5rem;
+        font-weight: 600;
+    }
+
+}
+
+/* LARGE */
+@media (min-width: 1100px) {
+    .main-header{
+          padding-inline: 50px;
+    }
+
+}
