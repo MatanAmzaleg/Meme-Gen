@@ -1,6 +1,10 @@
 'use strict'
 
+const STORAGE_KEY = 'savedMemesDB'
+
 let gCurrLine = 0
+
+let gMemes = []
 
 var gMeme = {
     selectedImgId: 5,
@@ -133,4 +137,13 @@ function setDirection(dir) {
 
 function getIsTextClick() {
     return gIsTextClicked
+}
+
+function saveMeme(){
+    gMemes.push(gMeme)
+    _saveMemeToStorage()
+}
+
+function _saveMemeToStorage() {
+    saveToStorage(STORAGE_KEY, gMemes)
 }

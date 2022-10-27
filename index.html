@@ -14,7 +14,7 @@
         <h1>Meme-Generator <img src="img/monster.png" alt=""></h1>
         <div class="nav-btns">
             <button onclick="onToggleGallery()">Gallery</button>
-            <button onclick="onToggleMemeEditor()">About</button>
+            <button onclick="onToggleSavedMemes()">About</button>
         </div>
     </header>
 
@@ -82,15 +82,29 @@
                 </label>
 
                 <div class="carousel"></div>
+                <button onclick="onSaveMeme()" class="workspace-btn save"><img src="img/ICONS/bookmark.png" alt=""></button>
+                <a download="file-name" onclick="downloadCanvas(this)" class="workspace-btn download flex"><img src="img/ICONS/download.png" alt=""></a>
             </div>
         </div>
     </div>
 
-    <footer class="main-footer flex">
+    <div class="saved-memes-section hidden">
+        <div class="saved-memes-container">
+        <div class="work">
+            <h1>Saved works</h1>
+            <article>your work<img src="img/meme-imgs/004.jpg" alt=""></article>
+            
+        </div>
+
+        </div>
+    </div>
+
+    <footer class="main-footer flex ">
         <h1>Meme-Generator <img src="img/monster.png" alt=""></h1>
     </footer>
 
     <script src="js/services/storage-service.js"></script>
+    <script src="js/services/upload-service.js"></script>
     <script src="js/services/gallery-service.js"></script>
     <script src="js/services/meme-service.js"></script>
     <script src="js/gallery-controller.js"></script>

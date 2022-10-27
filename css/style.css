@@ -140,6 +140,7 @@ input {
 }
 
 .photo {
+    cursor: pointer;
     height: 100%;
     max-width: 100%;
     display: block;
@@ -185,16 +186,15 @@ input {
 }
 
 .workspace-container {
-    margin-top: 20px;
+    margin-top: 50px;
     display: grid;
-    grid-template-rows: 1fr 1fr 1fr 1fr 1fr 2fr;
+    grid-template-rows: 1fr 1fr 1fr 1fr 1fr 2fr 1fr 1fr ;
     grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
-    height: 68%;
+    height: 80%;
     width: 80%;
     align-items: center;
     justify-content: center;
     justify-self: center;
-    gap: 20px;
 }
 
 .workspace-btn {
@@ -202,9 +202,9 @@ input {
     border-radius: 10px;
     border: 3px solid teal;
     background-color: rgb(240, 240, 240);
+    cursor: pointer;
 }
 
-.workspace-btn {}
 
 /* GRID LAYOUT */
 
@@ -246,6 +246,26 @@ input {
     grid-column: 2/5;
 }
 
+.save{
+    grid-row: 7;
+    grid-column: -5;
+}
+
+.share{
+    grid-row: 7;
+    grid-column: -4;
+}
+.download{
+    grid-row: 7;
+    grid-column: -3;
+}
+
+a.workspace-btn{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
 .text-stroke {
     display: flex;
     align-items: center;
@@ -263,6 +283,42 @@ input {
     grid-column: 4;
     border: 1px solid black;
 }
+
+
+/* saved-memes-section */
+
+.saved-memes-section{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin-top: 200px;
+}
+
+.saved-memes-container{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.work {
+    width: 24vh;
+    height: 34vh;
+    padding: 16px;
+    border-radius: 10px;
+    border: 3px solid silver;
+    margin: 20px;
+    background-color: rgb(49, 57, 61);
+    color: azure;
+  }
+
+  .work img{
+    width: 20vh;
+    height: 15vh;
+    margin: auto;
+    margin-top: 10px;
+  }
 
 
 /* FOOTER */
@@ -322,6 +378,10 @@ input {
     }
 
     /* meme editor */
+
+    .workspace-container{
+        gap: 10px;
+    }
 
     .workspace-btn img {
         width: 18px;
@@ -390,7 +450,8 @@ input {
     }
 
     .workspace-container {
-        height: 40%
+        height: 40%;
+        gap: 20px;
     }
 
 
@@ -476,10 +537,6 @@ input {
     /* main content */
 
     /* image gallery */
-
-    .search-nav {
-        padding-inline: 200px;
-    }
 
     .img-card {
         width: 23%;
