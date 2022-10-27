@@ -29,16 +29,6 @@
             </div>
         </nav>
         <div class="image-container flex">
-            <article class="img-card"><img class="photo" src="img/meme-imgs (various aspect ratios)/2.jpg" alt="">
-            </article>
-            <article class="img-card"></article>
-            <article class="img-card"></article>
-            <article class="img-card"></article>
-            <article class="img-card"></article>
-            <article class="img-card"></article>
-            <article class="img-card"></article>
-            <article class="img-card"></article>
-            <article class="img-card"></article>
         </div>
     </div>
 
@@ -50,10 +40,10 @@
         <div class="workspace flex">
                 <div class="workspace-container">
                     <input name="text" oninput="onSaveText(this.value)" class="input meme-text" type="text">
-                    <button class="workspace-btn up-and-down"><img
+                    <button onclick="onSwapLines()" class="workspace-btn up-and-down"><img
                             src="img/ICONS/up-and-down-opposite-double-arrows-side-by-side.png" alt=""></button>
-                    <button class="workspace-btn add"><img src="img/ICONS/add.png" alt=""></button>
-                    <button class="workspace-btn trash"><img src="img/ICONS/trash.png" alt=""></button>
+                    <button onclick="onAddAnotherLine()" class="workspace-btn add"><img src="img/ICONS/add.png" alt=""></button>
+                    <button onclick="onDeleteLine()" class="workspace-btn trash"><img src="img/ICONS/trash.png" alt=""></button>
                     <button onclick="onChangeFontSize(+5)" class="workspace-btn increase-font"><img src="img/ICONS/increase font - icon.png"
                             alt=""></button>
                     <button onclick="onChangeFontSize(-5)" class="workspace-btn decrease-font"><img src="img/ICONS/decrease font - icon.png"
