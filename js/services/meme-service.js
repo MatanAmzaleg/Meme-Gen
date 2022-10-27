@@ -12,41 +12,68 @@ var gMeme = {
             align: 'center',
             color: 'white',
             stroke: 'black',
-            pos: {y:100}
+            pos: { y: 100 },
+            rectPos: {}
         }
     ]
 }
 
-let gIsTextClicked
-const TOUCH_EVS = ['touchstart', 'touchmove', 'touchend']
-
-function isTextClicked(clickedPos){
-  const pos = gMeme.lines[0].pos
-  const distance = Math.sqrt((pos.x - clickedPos.x)**2 + (pos.y - clickedPos.y)**2)
-  return distance <= (gMeme.lines[0].pos.w)/2
+function saveWidthAndX(w, x){
+    gMeme.lines[gCurrLine].pos.x = x
+    gMeme.lines[gCurrLine].pos.w = w
 }
 
-function getSelectedLine(){
+let gIsTextClicked = false
+const TOUCH_EVS = ['touchstart', 'touchmove', 'touchend']
+
+function isTextClicked(clickedPos) {
+    const pos = gMeme.lines[gCurrLine].pos
+    const distance = Math.sqrt((pos.x - clickedPos.x) ** 2 + (pos.y - clickedPos.y) ** 2)
+    console.log(distance);
+    return (distance <= (gMeme.lines[gCurrLine].pos.w) && clickedPos.y < pos.y + gMeme.lines[gCurrLine].size && clickedPos.y > pos.y - gMeme.lines[gCurrLine].size) / 2
+}
+
+function setIsTextClicked(isclicked) {
+    gIsTextClicked = isclicked
+}
+
+function getIsTextClicked(){
+    return gIsTextClicked
+}
+
+function saveRectPos(x, y, w, h) {
+    gMeme.lines[gCurrLine].rectPos.x = x
+    gMeme.lines[gCurrLine].rectPos.y = y
+    gMeme.lines[gCurrLine].rectPos.w = w
+    gMeme.lines[gCurrLine].rectPos.h = h
+    console.log(gMeme.lines[gCurrLine].rectPos);
+}
+
+function getCurrLine() {
+    return gCurrLine
+}
+
+function getRectPos() {
+    return gMeme.lines[gCurrLine].rectPos
+}
+
+function getSelectedLine() {
     return gMeme.selectedLineIdx
 }
 
 function deleteLine() {
-    gMeme.lines[gCurrLine].txt = ''
+    gMeme.lines.splice(gCurrLine, 1)
+    gCurrLine--
 }
 
 
-function swapSelectedLine(){
-    if(gCurrLine === 0)  gMeme.selectedLineIdx = gCurrLine++
-    else  gMeme.selectedLineIdx = gCurrLine--
-   
+function swapSelectedLine() {
+    if (gCurrLine === 0) gMeme.selectedLineIdx = gCurrLine++
+    else gMeme.selectedLineIdx = gCurrLine--
+
 }
 
-
-function setIsTextClicked(isTextClicked){
-    gIsTextClicked = isTextClicked
-}
-
-function addAnotherLine(){
+function addAnotherLine() {
     gMeme.lines.push(
         {
             txt: 'I told her to get out of my fort.',
@@ -54,56 +81,56 @@ function addAnotherLine(){
             align: 'center',
             color: 'white',
             stroke: 'black',
-            pos: {y: 500}
+            pos: { y: 500 }
         }
     )
 }
 
-function saveTextRec(x,y,w,h){
+function saveTextRec(x, y, w, h) {
     gMeme.lines[gCurrLine].pos = x, y, w, h
-    }
-    
-    function getPos(){
-        return gMeme.lines[gCurrLine].pos
-    }
+}
 
-function getMeme(){
+function getPos() {
+    return gMeme.lines[gCurrLine].pos
+}
+
+function getMeme() {
     return gMeme
 }
 
-function saveText(text){
+function saveText(text) {
     gMeme.lines[gCurrLine].txt = text
     console.log(gMeme);
 }
 
-function saveColor(color){
+function saveColor(color) {
     gMeme.lines[gCurrLine].color = color
 }
 
-function saveImgId(imgId){
+function saveImgId(imgId) {
     gMeme.selectedImgId = imgId
 }
 
-function getImgId(){
+function getImgId() {
     return gMeme.selectedImgId
 }
 
-function saveStroke(strokeClr){
+function saveStroke(strokeClr) {
     gMeme.lines[gCurrLine].stroke = strokeClr
 }
 
-function saveFont(font){
+function saveFont(font) {
     gMeme.lines[gCurrLine].font = font
 }
 
-function setFontSize(op){
+function setFontSize(op) {
     gMeme.lines[gCurrLine].size += op
 }
 
-function setDirection(dir){
+function setDirection(dir) {
     gMeme.lines[gCurrLine].align = dir
 }
 
-function getIsTextClick(){
+function getIsTextClick() {
     return gIsTextClicked
 }

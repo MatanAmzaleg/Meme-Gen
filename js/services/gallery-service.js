@@ -62,3 +62,8 @@ function getImg(id){
 function getImgs(){
   return gImgs
 }
+
+function changeFilter(cat){
+  gKeywordSearchCountMap[cat]++
+  return gKeywordSearchCountMap[cat]
+}

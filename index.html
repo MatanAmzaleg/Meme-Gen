@@ -20,12 +20,21 @@
 
     <div class="image-gallery-container">
         <nav class="search-nav flex">
-            <input type="text" placeholder="Enter-search-keyword" name="" id="">
+            <input oninput="onTextFilterMeme(this.value)" type="text" placeholder="Enter-search-keyword" name="" id="">
+            <button onclick="onFlexible()">Im flexible</button>
             <div class="key-words flex">
                 <div class="words">
-                    funny politic books dogs comics
+                    <span onclick="onFilterMemes('funny')" class="funny">Funny</span>
+                    <span onclick="onFilterMemes('movies')" class="movies">Movies</span>
+                    <span onclick="onFilterMemes('politics')" class="politics">Politics</span>
+                    <span onclick="onFilterMemes('love')" class="love">Love</span>
+                    <span onclick="onFilterMemes('nature')" class="nature">Nature</span>
+                    <span onclick="onFilterMemes('crazy')" class="crazy">Crazy</span>
+                    <span onclick="onFilterMemes('tired')" class="tired">Tired</span>
+                    <span onclick="onFilterMemes('success')" class="success">Success</span>
+                    <span onclick="onFilterMemes('animals')" class="animals">Animals</span>
+                    <span onclick="onFilterMemes('kids')" class="kids">Kids</span>
                 </div>
-                <button>more</button>
             </div>
         </nav>
         <div class="image-container flex">
@@ -38,35 +47,42 @@
             <canvas style="outline: 1px solid green"></canvas>
         </div>
         <div class="workspace flex">
-                <div class="workspace-container">
-                    <input name="text" oninput="onSaveText(this.value)" class="input meme-text" type="text">
-                    <button onclick="onSwapLines()" class="workspace-btn up-and-down"><img
-                            src="img/ICONS/up-and-down-opposite-double-arrows-side-by-side.png" alt=""></button>
-                    <button onclick="onAddAnotherLine()" class="workspace-btn add"><img src="img/ICONS/add.png" alt=""></button>
-                    <button onclick="onDeleteLine()" class="workspace-btn trash"><img src="img/ICONS/trash.png" alt=""></button>
-                    <button onclick="onChangeFontSize(+5)" class="workspace-btn increase-font"><img src="img/ICONS/increase font - icon.png"
-                            alt=""></button>
-                    <button onclick="onChangeFontSize(-5)" class="workspace-btn decrease-font"><img src="img/ICONS/decrease font - icon.png"
-                            alt=""></button>
-                    <button onclick="onAlignText('left')" class="workspace-btn align-left"><img src="img/ICONS/align-to-left.png" alt=""></button>
-                    <button onclick="onAlignText('center')" class="workspace-btn align-center"><img src="img/ICONS/center-text-alignment.png"
-                            alt=""></button>
-                    <button onclick="onAlignText('right')"  class="workspace-btn align-right"><img src="img/ICONS/align-to-right.png" alt=""></button>
-                    <select onchange="onChangeFont(this.value)" class="input impact" name="font" id="">
-                        <option value="Impact">Impact</option>
-                        <option value="Arial">Arial</option>
-                    </select>
-                    <label for="text-stroke" class="workspace-btn text-stroke">
-                        <input onchange="onChangeStrokeColor(this.value)"  class="input" id="text-stroke" type="color" name="text-stroke" value="#22222">
-                        <img src="img/ICONS/text stroke.png" alt="">
-                    </label>
-                    <label class="workspace-btn paint-board" for="paint-board">
-                        <input onchange="onChangeTextColor(this.value)"  class="input" type="color" id="paint-board" name="paint-board" value="#FFFFFF">
-                        <img src="img/ICONS/paint-board-and-brush.png" alt="">
-                    </label>
+            <div class="workspace-container">
+                <input placeholder="Put your text here" name="text" oninput="onSaveText(this.value)"
+                    class="input meme-text" type="text">
+                <button onclick="onSwapLines()" class="workspace-btn up-and-down"><img
+                        src="img/ICONS/up-and-down-opposite-double-arrows-side-by-side.png" alt=""></button>
+                <button onclick="onAddAnotherLine()" class="workspace-btn add"><img src="img/ICONS/add.png"
+                        alt=""></button>
+                <button onclick="onDeleteLine()" class="workspace-btn trash"><img src="img/ICONS/trash.png"
+                        alt=""></button>
+                <button onclick="onChangeFontSize(+5)" class="workspace-btn increase-font"><img
+                        src="img/ICONS/increase font - icon.png" alt=""></button>
+                <button onclick="onChangeFontSize(-5)" class="workspace-btn decrease-font"><img
+                        src="img/ICONS/decrease font - icon.png" alt=""></button>
+                <button onclick="onAlignText('left')" class="workspace-btn align-left"><img
+                        src="img/ICONS/align-to-left.png" alt=""></button>
+                <button onclick="onAlignText('center')" class="workspace-btn align-center"><img
+                        src="img/ICONS/center-text-alignment.png" alt=""></button>
+                <button onclick="onAlignText('right')" class="workspace-btn align-right"><img
+                        src="img/ICONS/align-to-right.png" alt=""></button>
+                <select onchange="onChangeFont(this.value)" class="input impact" name="font" id="">
+                    <option value="Impact">Impact</option>
+                    <option value="Arial">Arial</option>
+                </select>
+                <label for="text-stroke" class="workspace-btn text-stroke">
+                    <input onchange="onChangeStrokeColor(this.value)" class="input" id="text-stroke" type="color"
+                        name="text-stroke" value="#22222">
+                    <img src="img/ICONS/text stroke.png" alt="">
+                </label>
+                <label class="workspace-btn paint-board" for="paint-board">
+                    <input onchange="onChangeTextColor(this.value)" class="input" type="color" id="paint-board"
+                        name="paint-board" value="#FFFFFF">
+                    <img src="img/ICONS/paint-board-and-brush.png" alt="">
+                </label>
 
-                    <div class="carousel"></div>
-                </div>
+                <div class="carousel"></div>
+            </div>
         </div>
     </div>
 
