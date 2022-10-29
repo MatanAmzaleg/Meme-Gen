@@ -2,30 +2,41 @@
 
 let gAddClick = 1
 
+function updateAddClick(){
+    gAddClick++
+}
+
 
 function resizeCanvas() {
     const elContainer = document.querySelector('.canvas-container')
     gElCanvas.width = elContainer.offsetWidth
     gElCanvas.height = elContainer.offsetHeight
     renderCanvas(getImgId())
-
+    
 }
 
-function renderCanvas(imgId, x, y) {
+function renderCanvas(imgId, selMeme) {
+    transferCanvasSize(gElCanvas.width, gElCanvas.height)
     var meme = getMeme()
-    var photo = getImg(imgId)
+    var photo = getImg(+imgId)
+    console.log(photo);
     let img = new Image()
     img.src = 'img/' + photo.url
-
+    
     gCtx.drawImage(img, 0, 0, gElCanvas.width, gElCanvas.height)
-    meme.lines.map(line => drawText(line))
+    if(selMeme){
+        selMeme.lines.map(line => drawText(line))
+    }else   meme.lines.map(line => drawText(line))
 }
+  
 
 
-
-
-
-
+function renderMemeFromWorks(memeId){
+    var memes = getMemes()
+    var selMeme = memes.find(meme => meme.selectedImgId === +memeId)
+    // resizeCanvas()
+    renderCanvas(memeId, selMeme)
+}
 
 
 function addListeners() {
@@ -65,14 +76,17 @@ function onMove(ev) {
     if (!getIsTextClicked()) return
     console.log('in pos')
     const pos = getEvPos(ev)
-    let line = getCurrLine()
-    drawText(line, ev.offsetX, ev.offsetY, pos)
+    console.log(pos);
+    var line = getMeme().lines[getCurrLine()]
+    updatePos(pos)
+    renderCanvas(getImgId())
+    drawText(line)
 }
 
 
 function onUp() {
     setIsTextClicked(false)
-    document.body.style.cursor = 'grab'
+    document.body.style.cursor = 'auto'
 }
 
 
@@ -104,18 +118,16 @@ function getEvPos(ev) {
 
 
 function onSaveText(text) {
-
     saveText(text)
     renderCanvas(getImgId())
 }
 
-function drawText(line, x) {
+function drawText(line) {
+    console.log(line);
     const text = gCtx.measureText(`${line.txt}`)
     const center = { x: gElCanvas.width / 2, y: gElCanvas.height / 2 }
-    let rectX
-    let textX
-    if (x) textX = x
-    // if(y) 
+    let rectX = line.pos.x
+    let textX = line.pos.y
     if (line.align === 'right') {
         textX = gElCanvas.width
         rectX = textX - text.width
@@ -128,17 +140,17 @@ function drawText(line, x) {
         textX = center.x
         rectX = textX - text.width / 2
     }
-    saveWidthAndX(text.width, textX)
+    saveWidth(text.width)
     gCtx.lineWidth = 2;
     gCtx.strokeStyle = line.stroke;
     gCtx.fillStyle = line.color;
-    gCtx.font = `${line.size}px Impact`
+    gCtx.font = `${line.size}px ${line.font}`
     gCtx.textAlign = `${line.align}`;
     console.log(line.pos.y);
-    gCtx.fillText(`${line.txt}`, textX, line.pos.y);
-    gCtx.strokeText(`${line.txt}`, textX, line.pos.y);
-    drawRect(rectX, line.pos.y - line.size, text.width + 15, line.size + 10)
-    console.log(text.width);
+    console.log(line.pos.x);
+    gCtx.fillText(`${line.txt}`, line.pos.x, line.pos.y);
+    gCtx.strokeText(`${line.txt}`, line.pos.x, line.pos.y);
+    // drawRect(rectX, line.pos.y - line.size, text.width + 15, line.size + 10)
 }
 
 function drawRect(x, y, w, h) {
@@ -193,6 +205,7 @@ function onAlignText(dir) {
 
 function onSaveMeme(){
     saveMeme()
+    onToggleSavedMemes()
 }
 
 

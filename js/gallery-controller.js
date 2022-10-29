@@ -26,6 +26,8 @@ function onToggleGallery() {
     document.querySelector('.saved-memes-section').classList.add('hidden')
     document.querySelector('.meme-editor-container').classList.add('hidden')
     document.querySelector('.image-gallery-container').classList.remove('hidden')
+    updateAddClick()
+    resetMeme()
 }
 
 function onToggleMemeEditor(imgId) {
@@ -35,7 +37,6 @@ function onToggleMemeEditor(imgId) {
     saveImgId(imgId)
     resizeCanvas()
     renderCanvas(imgId)
-    // renderText(imgId)
 }
 
 function onToggleSavedMemes() {
@@ -49,12 +50,12 @@ function onToggleSavedMemes() {
 function renderSavedMemes(){
     let savedMemes = getMemes()
     var strHTML = savedMemes.map(meme=> {
-        var imgId = meme.selectedImgId
-        imgUrl = getImg(imgId).url
-        keywords = getImg(imgId).keywords
-        console.log();
+        var imgId = meme.selectedImgId;
+        imgUrl = getImg(imgId).url;
+        keywords = getImg(imgId).keywords;
+        console.log(meme);
         return `
-        <div data-id="${meme.selectedImgId}" class="work ">
+        <div onclick="onRenderMeme(this.dataset.id)" data-id="${meme.selectedImgId}" class="work ">
         <h3 class='movie-title'>Title: ${meme.title}</h3>
         <img src="img/${imgUrl}" alt="">
         <p class="release-date">keyWords : ${keywords}</p>
@@ -62,6 +63,14 @@ function renderSavedMemes(){
         `
     }).join('')
     document.querySelector('.saved-memes-section').innerHTML = strHTML
+}
+
+function onRenderMeme(memeId){
+    console.log(memeId);
+    document.querySelector('.saved-memes-section').classList.add('hidden')
+    document.querySelector('.meme-editor-container').classList.remove('hidden')
+    document.querySelector('.image-gallery-container').classList.add('hidden')
+    renderMemeFromWorks(memeId)
 }
 
 function renderGallery(photos) {

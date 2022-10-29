@@ -68,6 +68,3 @@ function changeFilter(cat){
   return gKeywordSearchCountMap[cat]
 }
 
-function getMemes(){
- return loadFromStorage(STORAGE_KEY)
-}

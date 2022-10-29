@@ -14,7 +14,7 @@
         <h1>Meme-Generator <img src="img/monster.png" alt=""></h1>
         <div class="nav-btns">
             <button onclick="onToggleGallery()">Gallery</button>
-            <button onclick="onToggleSavedMemes()">About</button>
+            <button onclick="onToggleSavedMemes()">Works</button>
         </div>
     </header>
 
@@ -73,12 +73,12 @@
                 <label for="text-stroke" class="workspace-btn text-stroke">
                     <input onchange="onChangeStrokeColor(this.value)" class="input" id="text-stroke" type="color"
                         name="text-stroke" value="#22222">
-                    <img src="img/ICONS/text stroke.png" alt="">
+                    <img class="text-sroke-img" src="img/ICONS/text stroke.png" alt="">
                 </label>
                 <label class="workspace-btn paint-board" for="paint-board">
                     <input onchange="onChangeTextColor(this.value)" class="input" type="color" id="paint-board"
                         name="paint-board" value="#FFFFFF">
-                    <img src="img/ICONS/paint-board-and-brush.png" alt="">
+                    <img class="paint-board-img" src="img/ICONS/paint-board-and-brush.png" alt="">
                 </label>
 
                 <div class="carousel"></div>
@@ -88,13 +88,8 @@
         </div>
     </div>
 
-    <div class="saved-memes-section hidden">
+    <div class="saved-memes-section flex hidden">
         <div class="saved-memes-container">
-        <div class="work">
-            <h1>Saved works</h1>
-            <article>your work<img src="img/meme-imgs/004.jpg" alt=""></article>
-            
-        </div>
 
         </div>
     </div>

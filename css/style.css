@@ -33,6 +33,7 @@ html{
 }
 
 body {
+    position: relative;
     flex-direction: column;
     height: 100%;
     background-color: rgba(243, 232, 232, 0.808);
@@ -159,7 +160,7 @@ input {
     flex-direction: column;
     justify-content: space-between;
     margin: auto;
-    border: 1px solid black;
+    background-color: rgb(71, 117, 117);
     margin-top: 100px;
     margin-bottom: 5px;
     padding: 10px;
@@ -186,7 +187,6 @@ input {
 }
 
 .workspace-container {
-    margin-top: 50px;
     display: grid;
     grid-template-rows: 1fr 1fr 1fr 1fr 1fr 2fr 1fr 1fr ;
     grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
@@ -272,7 +272,6 @@ a.workspace-btn{
     justify-content: center;
     grid-row: 5;
     grid-column: 2;
-    border: 1px solid black;
 }
 
 .paint-board {
@@ -281,18 +280,15 @@ a.workspace-btn{
     justify-content: center;
     grid-row: 5;
     grid-column: 4;
-    border: 1px solid black;
 }
 
 
 /* saved-memes-section */
 
 .saved-memes-section{
-    display: flex;
-    flex-direction: column;
+    flex-wrap: wrap;
     align-items: center;
     justify-content: center;
-    margin-top: 200px;
 }
 
 .saved-memes-container{
@@ -311,6 +307,7 @@ a.workspace-btn{
     margin: 20px;
     background-color: rgb(49, 57, 61);
     color: azure;
+    cursor: pointer;
   }
 
   .work img{
@@ -373,10 +370,6 @@ a.workspace-btn{
         width: 45%;
     }
 
-    .search-nav {
-        padding-inline: 40px;
-    }
-
     /* meme editor */
 
     .workspace-container{
@@ -384,13 +377,14 @@ a.workspace-btn{
     }
 
     .workspace-btn img {
-        width: 18px;
-        height: 18px;
+        max-width: 100%;
+        max-height: 100%;
     }
 
     .meme-text {
         grid-column: 2/5;
         max-width: 200px;
+        height: 30px;
     }
 
     #text-stroke,
@@ -398,13 +392,24 @@ a.workspace-btn{
         max-width: 30px;
     }
 
+   .text-sroke-img, .paint-board-img{
+    max-width: 20px;
+    max-height: 20px;
+   }
+
     .impact {
         height: 30px;
     }
 
     .workspace button {
-        max-height: 35px;
-        max-width: 35px;
+        max-height: 50px;
+        max-width: 50px;
+    }
+
+    /* saved meme section */
+
+    .saved-memes-section{
+        margin-top: 80px;
     }
 }
 
@@ -508,6 +513,10 @@ a.workspace-btn{
         height: 789px;
     }
 
+    .workspace-container{
+        margin-top: 50px;
+    }
+
 
 
     .workspace-btn {
@@ -518,6 +527,12 @@ a.workspace-btn{
     .workspace-btn img {
         width: 40px;
         height: 40px;
+    }
+
+    /* saved meme section */
+
+    .saved-memes-section{
+        margin-top: 200px;
     }
 }
 
