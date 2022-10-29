@@ -53,6 +53,7 @@ function createMeme(){
 }
 
 function updatePos(pos){
+    console.log(pos);
     gMeme.lines[gCurrLine].pos = pos
 }
 
@@ -72,7 +73,6 @@ function isTextClicked(clickedPos) {
 }
 
 function resetMeme(){
-    console.log(createMeme());
     gMeme = createMeme()
 }
 
@@ -84,13 +84,12 @@ function getIsTextClicked(){
     return gIsTextClicked
 }
 
-function saveRectPos(x, y, w, h) {
-    gMeme.lines[gCurrLine].rectPos.x = x
-    gMeme.lines[gCurrLine].rectPos.y = y
-    gMeme.lines[gCurrLine].rectPos.w = w
-    gMeme.lines[gCurrLine].rectPos.h = h
-    console.log(gMeme.lines[gCurrLine].rectPos);
-}
+// function saveRectPos(x, y, w, h) {
+//     gMeme.lines[gCurrLine].rectPos.x = x
+//     gMeme.lines[gCurrLine].rectPos.y = y
+//     gMeme.lines[gCurrLine].rectPos.w = w
+//     gMeme.lines[gCurrLine].rectPos.h = h
+// }
 
 function getCurrLine() {
     return gCurrLine
@@ -150,7 +149,6 @@ function getMeme() {
 
 function saveText(text) {
     gMeme.lines[gCurrLine].txt = text
-    console.log(gMeme);
 }
 
 function saveColor(color) {

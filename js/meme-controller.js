@@ -9,6 +9,7 @@ function updateAddClick(){
 
 function resizeCanvas() {
     const elContainer = document.querySelector('.canvas-container')
+    transferCanvasSize(gElCanvas.width, gElCanvas.height)
     gElCanvas.width = elContainer.offsetWidth
     gElCanvas.height = elContainer.offsetHeight
     renderCanvas(getImgId())
@@ -16,10 +17,8 @@ function resizeCanvas() {
 }
 
 function renderCanvas(imgId, selMeme) {
-    transferCanvasSize(gElCanvas.width, gElCanvas.height)
     var meme = getMeme()
     var photo = getImg(+imgId)
-    console.log(photo);
     let img = new Image()
     img.src = 'img/' + photo.url
     
@@ -74,7 +73,6 @@ function onDown(ev) {
 function onMove(ev) {
     console.log('Im from onMove')
     if (!getIsTextClicked()) return
-    console.log('in pos')
     const pos = getEvPos(ev)
     console.log(pos);
     var line = getMeme().lines[getCurrLine()]
@@ -127,7 +125,7 @@ function drawText(line) {
     const text = gCtx.measureText(`${line.txt}`)
     const center = { x: gElCanvas.width / 2, y: gElCanvas.height / 2 }
     let rectX = line.pos.x
-    let textX = line.pos.y
+    let textX = line.pos.x
     if (line.align === 'right') {
         textX = gElCanvas.width
         rectX = textX - text.width
@@ -146,7 +144,6 @@ function drawText(line) {
     gCtx.fillStyle = line.color;
     gCtx.font = `${line.size}px ${line.font}`
     gCtx.textAlign = `${line.align}`;
-    console.log(line.pos.y);
     console.log(line.pos.x);
     gCtx.fillText(`${line.txt}`, line.pos.x, line.pos.y);
     gCtx.strokeText(`${line.txt}`, line.pos.x, line.pos.y);

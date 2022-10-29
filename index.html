@@ -10,12 +10,16 @@
 </head>
 
 <body class="flex" onload="onInit()">
+    <div class="modal-container flex" onclick="onToggleModal()"></div>
     <header class="main-header flex">
         <h1>Meme-Generator <img src="img/monster.png" alt=""></h1>
-        <div class="nav-btns">
+        <nav class="main-nav">
+             <div class="nav-btns">
             <button onclick="onToggleGallery()">Gallery</button>
             <button onclick="onToggleSavedMemes()">Works</button>
-        </div>
+        </div> 
+        </nav>
+        <button type="button" class="btn-menu" onclick="onToggleMenu()">☰</button>
     </header>
 
     <div class="image-gallery-container">
@@ -97,6 +101,8 @@
     <footer class="main-footer flex ">
         <h1>Meme-Generator <img src="img/monster.png" alt=""></h1>
     </footer>
+
+
 
     <script src="js/services/storage-service.js"></script>
     <script src="js/services/upload-service.js"></script>

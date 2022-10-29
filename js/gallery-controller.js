@@ -47,6 +47,14 @@ function onToggleSavedMemes() {
     renderSavedMemes()
 }
 
+function onToggleMenu() {
+    document.body.classList.toggle('menu-open')
+}
+
+function onToggleModal(){
+    document.body.classList.toggle('modal-open')
+}
+
 function renderSavedMemes(){
     let savedMemes = getMemes()
     var strHTML = savedMemes.map(meme=> {
