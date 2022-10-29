@@ -16,6 +16,12 @@ function resizeCanvas() {
     
 }
 
+function onDrawImg(img){
+    console.log(img.src);
+    saveSticker(img.src)
+    gCtx.drawImage(img, gElCanvas.width/2, gElCanvas.height/2, img.width/2, img.height/2)
+}
+
 function renderCanvas(imgId, selMeme) {
     var meme = getMeme()
     var photo = getImg(+imgId)

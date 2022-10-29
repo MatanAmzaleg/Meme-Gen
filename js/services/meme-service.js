@@ -6,6 +6,7 @@ let gCurrLine = 0
 
 let gMemes = []
 let gCanvasSize= {}
+let gStickers = []
 
 var gMeme = {
     title: '',
@@ -50,6 +51,10 @@ function createMeme(){
         }
     ]
 }
+}
+
+function saveSticker(img){
+    gStickers.push({src:img, pos:{x:gCanvasSize.w/2, y:gCanvasSize.h/2}})
 }
 
 function updatePos(pos){

@@ -28,7 +28,7 @@
     font-family: montserrat;
 }
 
-html{
+html {
     height: 100%;
 }
 
@@ -76,19 +76,19 @@ input {
     justify-content: center;
     align-items: center;
     cursor: pointer;
-  
+
     opacity: 0;
-  
+
     transition: opacity 0.6s;
     pointer-events: none;
-  }
+}
 
 
-  body.modal-open .modal-container {
+body.modal-open .modal-container {
     opacity: 1;
     pointer-events: auto;
-  }
-  
+}
+
 
 
 /* HEADER */
@@ -123,7 +123,8 @@ input {
 .search-nav {
     margin-top: 9vh;
     width: 100%;
-    height: 10vh;
+    overflow: scroll;
+    height: 16vh;
     background-color: bisque;
     justify-content: space-between;
     align-items: center;
@@ -133,11 +134,12 @@ input {
     align-items: center;
 }
 
-.key-words span{
+.key-words span {
     margin: 5px;
 }
 
-.search-nav button, .search-nav input{
+.search-nav button,
+.search-nav input {
     border-radius: 10px;
     border: 3px solid teal;
 }
@@ -161,7 +163,7 @@ input {
     max-height: 100%;
 }
 
-.img-card:hover{
+.img-card:hover {
     opacity: 0.5;
 }
 
@@ -213,7 +215,7 @@ input {
 
 .workspace-container {
     display: grid;
-    grid-template-rows: 1fr 1fr 1fr 1fr 1fr 2fr 1fr 1fr ;
+    grid-template-rows: 1fr 1fr 1fr 1fr 1fr 2fr 1fr 1fr;
     grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
     height: 80%;
     width: 80%;
@@ -271,21 +273,41 @@ input {
     grid-column: 2/5;
 }
 
-.save{
+.carousel{
+    grid-row: 6;
+    grid-column: 1/6;
+}
+
+.save {
     grid-row: 7;
     grid-column: -5;
 }
 
-.share{
+.share {
     grid-row: 7;
     grid-column: -4;
 }
-.download{
+
+.download {
     grid-row: 7;
     grid-column: -3;
 }
 
-a.workspace-btn{
+.carousel{
+    align-items: center;
+    justify-content: space-between;
+    height: 35px;
+    background-color: aliceblue;
+    border-radius: 10px;
+    border: 2px solid teal;
+}
+
+.carousel img{
+    width: 30px;
+    height: 30px;
+}
+
+a.workspace-btn {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -310,13 +332,13 @@ a.workspace-btn{
 
 /* saved-memes-section */
 
-.saved-memes-section{
+.saved-memes-section {
     flex-wrap: wrap;
     align-items: center;
     justify-content: center;
 }
 
-.saved-memes-container{
+.saved-memes-container {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -333,14 +355,14 @@ a.workspace-btn{
     background-color: rgb(49, 57, 61);
     color: azure;
     cursor: pointer;
-  }
+}
 
-  .work img{
+.work img {
     width: 20vh;
     height: 15vh;
     margin: auto;
     margin-top: 10px;
-  }
+}
 
 
 /* FOOTER */
@@ -414,7 +436,7 @@ a.workspace-btn{
 
     /* meme editor */
 
-    .workspace-container{
+    .workspace-container {
         gap: 10px;
     }
 
@@ -434,10 +456,11 @@ a.workspace-btn{
         max-width: 30px;
     }
 
-   .text-sroke-img, .paint-board-img{
-    max-width: 20px;
-    max-height: 20px;
-   }
+    .text-sroke-img,
+    .paint-board-img {
+        max-width: 20px;
+        max-height: 20px;
+    }
 
     .impact {
         height: 30px;
@@ -450,7 +473,7 @@ a.workspace-btn{
 
     /* saved meme section */
 
-    .saved-memes-section{
+    .saved-memes-section {
         margin-top: 80px;
     }
 }
@@ -512,6 +535,7 @@ a.workspace-btn{
     .btn-menu {
         display: none;
     }
+
     .main-header {
         font-size: 1.5rem;
 
@@ -528,6 +552,12 @@ a.workspace-btn{
 
     /* image gallery */
 
+    .search-nav {
+
+
+        height: 10vh;
+
+    }
 
     .search-nav button,
     input {
@@ -559,7 +589,7 @@ a.workspace-btn{
         height: 789px;
     }
 
-    .workspace-container{
+    .workspace-container {
         margin-top: 50px;
     }
 
@@ -577,13 +607,13 @@ a.workspace-btn{
 
     /* saved meme section */
 
-    .saved-memes-section{
+    .saved-memes-section {
         margin-top: 200px;
     }
 }
 
-@media (min-width:1300px){
-    .workspace-btn{
+@media (min-width:1300px) {
+    .workspace-btn {
         width: 70px;
         height: 70px;
     }
