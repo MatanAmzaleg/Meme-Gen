@@ -18,8 +18,8 @@ function resizeCanvas() {
 
 function onDrawImg(img){
     console.log(img.src);
-    saveSticker(img.src)
-    gCtx.drawImage(img, gElCanvas.width/2, gElCanvas.height/2, img.width/2, img.height/2)
+    saveSticker(img.src, img.height, img.width)
+    gCtx.drawImage(img, gElCanvas.width/2, gElCanvas.height/2, img.width/1.5, img.height/1.5)
 }
 
 function renderCanvas(imgId, selMeme) {
@@ -69,6 +69,10 @@ function addTouchListeners() {
 function onDown(ev) {
     console.log('Im from onDown')
     const pos = getEvPos(ev)
+    if(isStickerClicked(pos)){
+        console.log('stickerClicked');
+        setIsImgClicked(true)
+    } 
     if (!isTextClicked(pos)) return
     setIsTextClicked(true)
     gCtx.beginPath()
@@ -85,6 +89,7 @@ function onMove(ev) {
     updatePos(pos)
     renderCanvas(getImgId())
     drawText(line)
+    
 }
 
 

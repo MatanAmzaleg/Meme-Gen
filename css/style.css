@@ -525,6 +525,7 @@ a.workspace-btn {
     }
 
 
+
 }
 
 /* MEDIUM */
@@ -603,6 +604,11 @@ a.workspace-btn {
     .workspace-btn img {
         width: 40px;
         height: 40px;
+    }
+
+    .workspace-btn.download.flex{
+        height: 35px;
+        width: 40px;
     }
 
     /* saved meme section */

@@ -53,8 +53,18 @@ function createMeme(){
 }
 }
 
-function saveSticker(img){
-    gStickers.push({src:img, pos:{x:gCanvasSize.w/2, y:gCanvasSize.h/2}})
+function isStickerClicked(clickedPos){
+    gStickers.forEach(sticker => {
+        let distance = Math.sqrt((sticker.pos.x - clickedPos.x) ** 2 + (sticker.pos.y - clickedPos.y) ** 2)
+        console.log(distance);
+        console.log(clickedPos.y, sticker.pos.y*2);
+        console.log((clickedPos.y > (sticker.pos.y - sticker.pos.h) / 2));
+        if((distance <= (sticker.pos.w)*2 && clickedPos.y <= (sticker.pos.y*2) && clickedPos.y > sticker.pos.y - sticker.pos.h) / 2) return true
+    })
+}
+
+function saveSticker(img, h ,w){
+    gStickers.push({src:img, pos:{x:gCanvasSize.w/2, y:gCanvasSize.h/2, h, w}})
 }
 
 function updatePos(pos){
