@@ -60,9 +60,9 @@
                         alt=""></button>
                 <button onclick="onDeleteLine()" class="workspace-btn trash"><img src="img/ICONS/trash.png"
                         alt=""></button>
-                <button onclick="onChangeFontSize(+5)" class="workspace-btn increase-font"><img
+                <button onclick="onChangeFontSize(+2)" class="workspace-btn increase-font"><img
                         src="img/ICONS/increase font - icon.png" alt=""></button>
-                <button onclick="onChangeFontSize(-5)" class="workspace-btn decrease-font"><img
+                <button onclick="onChangeFontSize(-2)" class="workspace-btn decrease-font"><img
                         src="img/ICONS/decrease font - icon.png" alt=""></button>
                 <button onclick="onAlignText('left')" class="workspace-btn align-left"><img
                         src="img/ICONS/align-to-left.png" alt=""></button>
@@ -91,6 +91,9 @@
                     <img onclick="onDrawImg(this)" src="img/STICKERS/money.png" alt="">
                     <img onclick="onDrawImg(this)" src="img/STICKERS/sticker.png" alt="">
                     <img onclick="onDrawImg(this)" src="img/STICKERS/sunglasses.png" alt="">
+                    <img onclick="onDrawImg(this)" src="img/STICKERS/cool.png" alt="">
+                    <img onclick="onDrawImg(this)" src="img/STICKERS/baseball-cap.png" alt="">
+                    <img onclick="onDrawImg(this)" src="img/STICKERS/cigarette.png" alt="">
                 </div>
                 <button onclick="onSaveMeme()" class="workspace-btn save"><img src="img/ICONS/bookmark.png" alt=""></button>
                 <a download="file-name" onclick="downloadCanvas(this)" class="workspace-btn download flex"><img src="img/ICONS/download.png" alt=""></a>
@@ -110,6 +113,7 @@
 
 
 
+    <script src="js/services/utils-service.js"></script>
     <script src="js/services/storage-service.js"></script>
     <script src="js/services/upload-service.js"></script>
     <script src="js/services/gallery-service.js"></script>

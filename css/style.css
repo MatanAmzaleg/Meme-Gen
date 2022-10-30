@@ -35,7 +35,6 @@ html {
 body {
     position: relative;
     flex-direction: column;
-    height: 100%;
     background-color: rgba(243, 232, 232, 0.808);
 }
 
@@ -99,17 +98,26 @@ body.modal-open .modal-container {
     background-color: var(--clr-primary);
     width: 100%;
     position: fixed;
-
+    z-index: 10;
+    font-size: 0.6rem;
+    justify-content: space-between;
+    padding-inline: 0;
 }
 
 .main-header img {
-    height: 60px;
+    height: 30px;
 }
+
+
 
 .main-header button {
     color: var(--clr10);
     border: none;
     background-color: inherit;
+    width: 40px;
+    height: 10px;
+    font-size: 0.7rem;
+    margin: 10px;
 }
 
 .main-header button:hover {
@@ -121,10 +129,12 @@ body.modal-open .modal-container {
 /* IMAGE GALLERY */
 
 .search-nav {
+    position: fixed;
+    height: 10vh;
+    z-index: 10;
     margin-top: 9vh;
     width: 100%;
-    overflow: scroll;
-    height: 16vh;
+    overflow-y: scroll;
     background-color: bisque;
     justify-content: space-between;
     align-items: center;
@@ -150,7 +160,7 @@ body.modal-open .modal-container {
     justify-content: space-evenly;
     margin: auto;
     flex-wrap: wrap;
-    margin-top: 20px;
+    margin-top: 200px;
     width: 90%;
     gap: 20px;
     overflow: auto;
@@ -158,9 +168,11 @@ body.modal-open .modal-container {
 }
 
 .img-card {
+    width: 45%;
     flex-basis: auto;
     aspect-ratio: 1/1;
     max-height: 100%;
+
 }
 
 .img-card:hover {
@@ -185,7 +197,6 @@ body.modal-open .modal-container {
     height: 609px;
     align-items: center;
     flex-direction: column;
-    justify-content: space-between;
     margin: auto;
     background-color: rgb(71, 117, 117);
     margin-top: 100px;
@@ -199,6 +210,7 @@ body.modal-open .modal-container {
 
 .canvas-container {
     align-items: center;
+    justify-content: center;
     width: 80%;
     height: 40%;
     border-radius: 10px;
@@ -222,6 +234,7 @@ body.modal-open .modal-container {
     align-items: center;
     justify-content: center;
     justify-self: center;
+    gap: 10px;
 }
 
 .workspace-btn {
@@ -230,6 +243,10 @@ body.modal-open .modal-container {
     border: 3px solid teal;
     background-color: rgb(240, 240, 240);
     cursor: pointer;
+}
+
+.workspace-btn:hover {
+    background-color: #ccc;
 }
 
 
@@ -273,9 +290,10 @@ body.modal-open .modal-container {
     grid-column: 2/5;
 }
 
-.carousel{
+.carousel {
     grid-row: 6;
     grid-column: 1/6;
+
 }
 
 .save {
@@ -293,16 +311,20 @@ body.modal-open .modal-container {
     grid-column: -3;
 }
 
-.carousel{
+.carousel {
     align-items: center;
     justify-content: space-between;
-    height: 35px;
+    height: 40px;
     background-color: aliceblue;
     border-radius: 10px;
+    padding-inline: 5px;
     border: 2px solid teal;
+    overflow-x: scroll;
+    overflow-y: hidden;
 }
 
-.carousel img{
+.carousel img {
+    margin-inline: 10px;
     width: 30px;
     height: 30px;
 }
@@ -392,22 +414,7 @@ a.workspace-btn {
 @media (max-width: 900px) {
 
     /* header */
-    .main-header {
-        font-size: 0.6rem;
-        justify-content: space-between;
-        padding-inline: 0;
-    }
 
-    .main-header img {
-        height: 30px;
-    }
-
-    .main-header button {
-        width: 40px;
-        height: 10px;
-        font-size: 0.7rem;
-        margin: 10px;
-    }
 
     .main-nav {
         position: absolute;
@@ -430,15 +437,8 @@ a.workspace-btn {
 
     /* image gallery */
 
-    .img-card {
-        width: 45%;
-    }
-
     /* meme editor */
 
-    .workspace-container {
-        gap: 10px;
-    }
 
     .workspace-btn img {
         max-width: 100%;
@@ -479,10 +479,15 @@ a.workspace-btn {
 }
 
 @media (min-width: 600px) {
+
+    .search-nav{
+        height: 10vh;
+    }
     .workspace {
         width: 60%;
     }
 }
+
 
 
 /* SMALL */
@@ -491,7 +496,7 @@ a.workspace-btn {
     /* header */
     .main-header {
         font-size: 1rem;
-        justify-content: space-between;
+        /* justify-content: space-between; */
     }
 
     .main-header button {
@@ -553,11 +558,14 @@ a.workspace-btn {
 
     /* image gallery */
 
+    .image-container {
+        margin-top: 240px;
+    }
+
     .search-nav {
-
-
+        position: fixed;
         height: 10vh;
-
+        z-index: 10;
     }
 
     .search-nav button,
@@ -572,8 +580,8 @@ a.workspace-btn {
     /* meme editor */
 
     .canvas-container {
-        width: 58%;
-        height: 85%;
+        max-width: 55%;
+        max-height: 70%;
     }
 
     .workspace {
@@ -588,6 +596,7 @@ a.workspace-btn {
     .meme-editor-container {
         flex-direction: row;
         height: 789px;
+        justify-content: space-between;
     }
 
     .workspace-container {
@@ -606,9 +615,29 @@ a.workspace-btn {
         height: 40px;
     }
 
-    .workspace-btn.download.flex{
-        height: 35px;
-        width: 40px;
+    .carousel {
+        height: 80px;
+        height: 50px;
+        padding-inline: 20px;
+    }
+
+    .carousel::-webkit-scrollbar {
+        width: 5px;
+        height: 10px;
+    }
+
+    .carousel::-webkit-scrollbar-track {
+        background: #f1f1f1;
+    }
+
+    /* Handle */
+    .carousel::-webkit-scrollbar-thumb {
+        background: #888;
+    }
+
+    /* Handle on hover */
+    .carousel::-webkit-scrollbar-thumb:hover {
+        background: #555;
     }
 
     /* saved meme section */

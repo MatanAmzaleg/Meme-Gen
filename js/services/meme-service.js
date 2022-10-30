@@ -3,13 +3,17 @@
 const STORAGE_KEY = 'savedMemesDB'
 
 let gCurrLine = 0
+let gIsTextClicked = false
+const TOUCH_EVS = ['touchstart', 'touchmove', 'touchend']
+let gIsStickerClicked = false
 
 let gMemes = []
-let gCanvasSize= {}
+let gCanvasSize = {}
 let gStickers = []
 
 var gMeme = {
     title: '',
+    id: makeId(),
     selectedImgId: 0,
     selectedLineIdx: 0,
     lines: [
@@ -20,74 +24,76 @@ var gMeme = {
             color: 'white',
             stroke: 'black',
             font: 'Impact',
-            pos: {x:gCanvasSize.w/2, y:50 },
+            pos: { x: gCanvasSize.w / 2, y: 50 },
             rectPos: {}
         }
     ]
 }
 
-function createMemes(){
-    var memes = loadFromStorage(STORAGE_KEY)
+// function createMemes(){
+//     var memes = loadFromStorage(STORAGE_KEY)
 
-    if(!memes || !memes.length){
-        memes = [createMeme]
+//     if(!memes || !memes.length){
+//         memes = [createMeme]
+//     }
+// }
+
+function createMeme() {
+    return {
+        title: '',
+        selectedImgId: 0,
+        selectedLineIdx: 0,
+        id: makeId(),
+        lines: [
+            {
+                txt: 'My wife accused me for being immature.',
+                size: 30,
+                align: 'center',
+                color: 'white',
+                stroke: 'black',
+                font: 'Impact',
+                pos: { x: gCanvasSize.w / 2, y: 50 },
+                rectPos: {}
+            }
+        ]
     }
 }
 
-function createMeme(){
-    return  {title: '',
-    selectedImgId: 0,
-    selectedLineIdx: 0,
-    lines: [
-        {
-            txt: 'My wife accused me for being immature.',
-            size: 30,
-            align: 'center',
-            color: 'white',
-            stroke: 'black',
-            font: 'Impact',
-            pos: {x:gCanvasSize.w/2, y:50 },
-            rectPos: {}
-        }
-    ]
-}
-}
 
-function isStickerClicked(clickedPos){
+function isStickerClicked(clickedPos) {
+    let isClicked = false
     gStickers.forEach(sticker => {
-        let distance = Math.sqrt((sticker.pos.x - clickedPos.x) ** 2 + (sticker.pos.y - clickedPos.y) ** 2)
-        console.log(distance);
-        console.log(clickedPos.y, sticker.pos.y*2);
-        console.log((clickedPos.y > (sticker.pos.y - sticker.pos.h) / 2));
-        if((distance <= (sticker.pos.w)*2 && clickedPos.y <= (sticker.pos.y*2) && clickedPos.y > sticker.pos.y - sticker.pos.h) / 2) return true
+        let distance = Math.sqrt((sticker.pos.x + sticker.pos.w / 4 - clickedPos.x) ** 2 + (sticker.pos.y + sticker.pos.w / 4 - clickedPos.y) ** 2)
+        if (distance <= sticker.pos.w / 2) isClicked = true
     })
+    return isClicked
 }
 
-function saveSticker(img, h ,w){
-    gStickers.push({src:img, pos:{x:gCanvasSize.w/2, y:gCanvasSize.h/2, h, w}})
+function setIsImgClicked(isclicked) {
+    gIsStickerClicked = isclicked
 }
 
-function updatePos(pos){
+function saveSticker(img, h, w) {
+    gStickers.push({ src: img, pos: { x: gCanvasSize.w / 2, y: gCanvasSize.h / 2, h, w } })
+}
+
+function updatePos(pos) {
     console.log(pos);
     gMeme.lines[gCurrLine].pos = pos
 }
 
-function saveWidth(w){
+function saveWidth(w) {
     gMeme.lines[gCurrLine].pos.w = w
 }
 
 
-let gIsTextClicked = false
-const TOUCH_EVS = ['touchstart', 'touchmove', 'touchend']
-
 function isTextClicked(clickedPos) {
     const pos = gMeme.lines[gCurrLine].pos
     const distance = Math.sqrt((pos.x - clickedPos.x) ** 2 + (pos.y - clickedPos.y) ** 2)
-    console.log(distance);
-    return (distance <= (gMeme.lines[gCurrLine].pos.w)/2 && clickedPos.y < pos.y + gMeme.lines[gCurrLine].size && clickedPos.y > pos.y - gMeme.lines[gCurrLine].size) / 2
+    return (distance <= (gMeme.lines[gCurrLine].pos.w) / 2 && clickedPos.y < pos.y + gMeme.lines[gCurrLine].size && clickedPos.y > pos.y - gMeme.lines[gCurrLine].size) / 2
 }
 
-function resetMeme(){
+function resetMeme() {
     gMeme = createMeme()
 }
 
@@ -95,7 +101,7 @@ function setIsTextClicked(isclicked) {
     gIsTextClicked = isclicked
 }
 
-function getIsTextClicked(){
+function getIsTextClicked() {
     return gIsTextClicked
 }
 
@@ -139,15 +145,15 @@ function addAnotherLine() {
             color: 'white',
             stroke: 'black',
             font: 'Impact',
-            pos: { y: gCanvasSize.h - 30 , x: gCanvasSize.w/2}
+            pos: { y: gCanvasSize.h - 30, x: gCanvasSize.w / 2 }
         }
     )
 }
 
-function transferCanvasSize(w,h){
+function transferCanvasSize(w, h) {
     gCanvasSize.w = w
     gCanvasSize.h = h
-    gMeme.lines[gCurrLine].pos.x = w/2
+    gMeme.lines[gCurrLine].pos.x = w / 2
 }
 
 function saveTextRec(x, y, w, h) {
@@ -198,7 +204,16 @@ function getIsTextClick() {
     return gIsTextClicked
 }
 
-function saveMeme(){
+function getMemeById(memeId) {
+    return gMemes.find(meme => meme.id === memeId)
+}
+
+function updateDataUrl(dataUrl, memeId) {
+    let meme = getMemeById(memeId)
+    meme.dataUrl = dataUrl
+}
+
+function saveMeme() {
     var name = prompt('enter meme name')
     gMeme.title = name
     gMemes.push(gMeme)
@@ -209,6 +224,6 @@ function _saveMemeToStorage() {
     saveToStorage(STORAGE_KEY, gMemes)
 }
 
-function getMemes(){
+function getMemes() {
     return loadFromStorage(STORAGE_KEY)
-   }
+}

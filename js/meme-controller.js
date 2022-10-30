@@ -7,11 +7,17 @@ function updateAddClick(){
 }
 
 
-function resizeCanvas() {
+function resizeCanvas(imgId) {
+    var photo = getImg(imgId)
+    const img = new Image();
+    img.src = 'img/' + photo.url;
+    let imgHeight = img.naturalHeight
+    let imgWidth = img.naturalWidth;
     const elContainer = document.querySelector('.canvas-container')
-    transferCanvasSize(gElCanvas.width, gElCanvas.height)
     gElCanvas.width = elContainer.offsetWidth
-    gElCanvas.height = elContainer.offsetHeight
+    gElCanvas.height = (elContainer.offsetWidth*imgHeight)/imgWidth
+    console.log(photo.naturalWidth);
+    transferCanvasSize(gElCanvas.width, gElCanvas.height)
     renderCanvas(getImgId())
     
 }
@@ -69,6 +75,7 @@ function addTouchListeners() {
 function onDown(ev) {
     console.log('Im from onDown')
     const pos = getEvPos(ev)
+    console.log(isStickerClicked(pos));
     if(isStickerClicked(pos)){
         console.log('stickerClicked');
         setIsImgClicked(true)
@@ -212,11 +219,11 @@ function onAlignText(dir) {
 }
 
 function onSaveMeme(){
+    const dataUrl = gElCanvas.toDataURL()
+    updateDataUrl(dataUrl,)
     saveMeme()
     onToggleSavedMemes()
 }
-
-
 
 
 

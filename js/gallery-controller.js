@@ -35,7 +35,7 @@ function onToggleMemeEditor(imgId) {
     document.querySelector('.meme-editor-container').classList.remove('hidden')
     document.querySelector('.image-gallery-container').classList.add('hidden')
     saveImgId(imgId)
-    resizeCanvas()
+    resizeCanvas(imgId)
     renderCanvas(imgId)
 }
 
